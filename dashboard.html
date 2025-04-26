@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | FitTrack Pro</title>
+    <meta name="description" content="FitTrack Pro dashboard with key metrics and statistics">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.css">
+</head>
+
+<body class="dashboard-page">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-dumbbell me-2"></i>FitTrack Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="dashboard.html">
+                            <i class="fas fa-tachometer-alt me-1"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="members.html">
+                            <i class="fas fa-users me-1"></i> Members
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bmi-calculator.html">
+                            <i class="fas fa-calculator me-1"></i> BMI Calculator
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fitness-plans.html">
+                            <i class="fas fa-heartbeat me-1"></i> Fitness Plans
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nutrition.html">
+                            <i class="fas fa-apple-alt me-1"></i> Nutrition
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <header class="dashboard-header bg-gradient-primary text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1><i class="fas fa-tachometer-alt me-2"></i>Dashboard</h1>
+                    <p class="lead mb-0">Welcome to your FitTrack Pro control center.</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <span class="current-date"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Key Metrics -->
+    <section class="metrics py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card dashboard-card bg-primary text-white">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="card-subtitle mb-1">Total Members</h6>
+                                    <h2 class="card-title mb-0" id="total-members">0</h2>
+                                </div>
+                                <div class="dashboard-icon">
+                                    <i class="fas fa-users fa-2x"></i>
+                                </div>
+                            </div>
+                            <div class="progress mt-3" style="height: 5px;">
+                                <div class="progress-bar bg-white" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card dashboard-card bg-success text-white">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="card-subtitle mb-1">Active Memberships</h6>
+                                    <h2 class="card-title mb-0" id="active-memberships">0</h2>
+                                </div>
+                                <div class="dashboard-icon">
+                                    <i class="fas fa-check-circle fa-2x"></i>
+                                </div>
+                            </div>
+                            <div class="progress mt-3" style="height: 5px;">
+                                <div class="progress-bar bg-white" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card dashboard-card bg-info text-white">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="card-subtitle mb-1">Today's Attendance</h6>
+                                    <h2 class="card-title mb-0" id="todays-attendance">0</h2>
+                                </div>
+                                <div class="dashboard-icon">
+                                    <i class="fas fa-calendar-check fa-2x"></i>
+                                </div>
+                            </div>
+                            <div class="progress mt-3" style="height: 5px;">
+                                <div class="progress-bar bg-white" style="width: 45%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card dashboard-card bg-warning text-white">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="card-subtitle mb-1">Active Plans</h6>
+                                    <h2 class="card-title mb-0" id="active-plans">0</h2>
+                                </div>
+                                <div class="dashboard-icon">
+                                    <i class="fas fa-clipboard-list fa-2x"></i>
+                                </div>
+                            </div>
+                            <div class="progress mt-3" style="height: 5px;">
+                                <div class="progress-bar bg-white" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Charts and Analytics -->
+    <section class="analytics py-4">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-white">
+                            <h5 class="card-title mb-0">Attendance Trends</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="attendanceChart" height="250"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-white">
+                            <h5 class="card-title mb-0">Members BMI Distribution</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="bmiDistributionChart" height="250"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions and Recent Activity -->
+            <div class="row g-4 mt-2">
+                <div class="col-lg-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-white">
+                            <h5 class="card-title mb-0">Quick Actions</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="quick-actions">
+                                <a href="members.html" class="btn btn-primary btn-lg d-block mb-3">
+                                    <i class="fas fa-user-plus me-2"></i> Add New Member
+                                </a>
+                                <a href="members.html" class="btn btn-success btn-lg d-block mb-3">
+                                    <i class="fas fa-clipboard-check me-2"></i> Mark Attendance
+                                </a>
+                                <a href="bmi-calculator.html" class="btn btn-info btn-lg d-block mb-3 text-white">
+                                    <i class="fas fa-calculator me-2"></i> Calculate BMI
+                                </a>
+                                <a href="fitness-plans.html" class="btn btn-warning btn-lg d-block text-white">
+                                    <i class="fas fa-heartbeat me-2"></i> Assign Fitness Plan
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-white">
+                            <h5 class="card-title mb-0">Recent Activity</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush activity-feed" id="recent-activities">
+                                <!-- Activities will be populated via JavaScript -->
+                                <li class="list-group-item py-3">
+                                    <div class="d-flex">
+                                        <div class="activity-icon bg-primary text-white me-3">
+                                            <i class="fas fa-user-plus"></i>
+                                        </div>
+                                        <div>
+                                            <p class="mb-0">New member John Doe added</p>
+                                            <small class="text-muted">Today, 10:30 AM</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item py-3">
+                                    <div class="d-flex">
+                                        <div class="activity-icon bg-success text-white me-3">
+                                            <i class="fas fa-clipboard-check"></i>
+                                        </div>
+                                        <div>
+                                            <p class="mb-0">Attendance marked for 12 members</p>
+                                            <small class="text-muted">Today, 9:15 AM</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item py-3">
+                                    <div class="d-flex">
+                                        <div class="activity-icon bg-danger text-white me-3">
+                                            <i class="fas fa-heartbeat"></i>
+                                        </div>
+                                        <div>
+                                            <p class="mb-0">Weight Loss Plan assigned to Jane Smith</p>
+                                            <small class="text-muted">Yesterday, 3:45 PM</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item py-3">
+                                    <div class="d-flex">
+                                        <div class="activity-icon bg-info text-white me-3">
+                                            <i class="fas fa-calculator"></i>
+                                        </div>
+                                        <div>
+                                            <p class="mb-0">BMI calculated for 5 members</p>
+                                            <small class="text-muted">Yesterday, 2:20 PM</small>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-dumbbell me-2"></i>FitTrack Pro</h5>
+                    <p>Comprehensive gym management system for tracking members, schedules, and fitness progress.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="dashboard.html" class="text-white">Dashboard</a></li>
+                        <li><a href="members.html" class="text-white">Members</a></li>
+                        <li><a href="bmi-calculator.html" class="text-white">BMI Calculator</a></li>
+                        <li><a href="fitness-plans.html" class="text-white">Fitness Plans</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope me-2"></i>info@fittrackpro.com</li>
+                        <li><i class="fas fa-phone me-2"></i>(123) 456-7890</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2023 FitTrack Pro. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Display current date
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.querySelector('.current-date').textContent = now.toLocaleDateString('en-US', options);
+
+            // Initialize charts
+            initializeAttendanceChart();
+            initializeBmiDistributionChart();
+        });
+
+        // Attendance chart
+        function initializeAttendanceChart() {
+            const ctx = document.getElementById('attendanceChart').getContext('2d');
+
+            // Sample data - in a real app, this would come from your database
+            const attendanceData = {
+                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                datasets: [{
+                    label: 'Weekly Attendance',
+                    data: [25, 30, 28, 32, 36, 20, 15],
+                    backgroundColor: 'rgba(13, 110, 253, 0.2)',
+                    borderColor: 'rgba(13, 110, 253, 1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true
+                }]
+            };
+
+            new Chart(ctx, {
+                type: 'line',
+                data: attendanceData,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // BMI distribution chart
+        function initializeBmiDistributionChart() {
+            const ctx = document.getElementById('bmiDistributionChart').getContext('2d');
+
+            // Sample data - in a real app, this would be calculated from your members data
+            const bmiData = {
+                labels: ['Underweight', 'Normal', 'Overweight', 'Obese'],
+                datasets: [{
+                    label: 'BMI Distribution',
+                    data: [10, 45, 30, 15],
+                    backgroundColor: [
+                        'rgba(23, 162, 184, 0.6)',
+                        'rgba(40, 167, 69, 0.6)',
+                        'rgba(255, 193, 7, 0.6)',
+                        'rgba(220, 53, 69, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(23, 162, 184, 1)',
+                        'rgba(40, 167, 69, 1)',
+                        'rgba(255, 193, 7, 1)',
+                        'rgba(220, 53, 69, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: bmiData,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

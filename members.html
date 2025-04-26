@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Management | FitTrack Pro</title>
+    <meta name="description" content="FitTrack Pro member management with attendance tracking">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-bs5@1.11.5/css/dataTables.bootstrap5.min.css">
+</head>
+<body class="members-page">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-dumbbell me-2"></i>FitTrack Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">
+                            <i class="fas fa-tachometer-alt me-1"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="members.html">
+                            <i class="fas fa-users me-1"></i> Members
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bmi-calculator.html">
+                            <i class="fas fa-calculator me-1"></i> BMI Calculator
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fitness-plans.html">
+                            <i class="fas fa-heartbeat me-1"></i> Fitness Plans
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nutrition.html">
+                            <i class="fas fa-apple-alt me-1"></i> Nutrition
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="members-header bg-gradient-purple text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1><i class="fas fa-users me-2"></i>Member Management</h1>
+                    <p class="lead mb-0">Add, manage, and track your gym members.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addMemberModal">
+                        <i class="fas fa-user-plus me-2"></i>Add New Member
+                    </button>
+                    <button id="mark-attendance-btn" class="btn btn-success ms-2">
+                        <i class="fas fa-clipboard-check me-2"></i>Mark Attendance
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats Cards -->
+    <section class="member-stats py-4 bg-light">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card border-primary mb-3 h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                            <h5 class="card-title">Total Members</h5>
+                            <p class="card-text display-5 fw-bold" id="stats-total-members">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card border-success mb-3 h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
+                            <h5 class="card-title">Active Members</h5>
+                            <p class="card-text display-5 fw-bold" id="stats-active-members">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card border-info mb-3 h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-calendar-check fa-3x text-info mb-3"></i>
+                            <h5 class="card-title">Present Today</h5>
+                            <p class="card-text display-5 fw-bold" id="stats-attendance-today">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card border-warning mb-3 h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-chart-line fa-3x text-warning mb-3"></i>
+                            <h5 class="card-title">Avg. BMI</h5>
+                            <p class="card-text display-5 fw-bold" id="stats-avg-bmi">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Member List -->
+    <section class="member-list py-4">
+        <div class="container">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0"><i class="fas fa-list me-2"></i>Member Directory</h5>
+                        <div class="input-group" style="max-width: 300px;">
+                            <input type="text" class="form-control" id="member-search" placeholder="Search members...">
+                            <button class="btn btn-outline-primary" type="button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="members-table">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Membership</th>
+                                    <th>Attendance</th>
+                                    <th>BMI</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="member-list">
+                                <!-- Dynamic member list will be populated via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Member Modal -->
+    <div class="modal fade" id="addMemberModal" tabindex="-1" aria-labelledby="addMemberModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-purple text-white">
+                    <h5 class="modal-title" id="addMemberModalLabel"><i class="fas fa-user-plus me-2"></i>Add New Member</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="member-form">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="member-name" class="form-label">Full Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    <input type="text" class="form-control" id="member-name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="member-email" class="form-label">Email Address</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                    <input type="email" class="form-control" id="member-email" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="member-phone" class="form-label">Phone Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                    <input type="tel" class="form-control" id="member-phone" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="member-dob" class="form-label">Date of Birth</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                    <input type="date" class="form-control" id="member-dob">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="member-age" class="form-label">Age</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-sort-numeric-up"></i></span>
+                                    <input type="number" class="form-control" id="member-age" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="member-gender" class="form-label">Gender</label>
+                                <select class="form-select" id="member-gender" required>
+                                    <option value="">Choose...</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="membership-status" class="form-label">Membership Status</label>
+                                <select class="form-select" id="membership-status" required>
+                                    <option value="y">Active (Y)</option>
+                                    <option value="n">Inactive (N)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="member-height" class="form-label">Height (cm)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-ruler-vertical"></i></span>
+                                    <input type="number" class="form-control" id="member-height">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="member-weight" class="form-label">Weight (kg)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-weight"></i></span>
+                                    <input type="number" class="form-control" id="member-weight">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="member-address" class="form-label">Address</label>
+                            <textarea class="form-control" id="member-address" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="member-notes" class="form-label">Additional Notes</label>
+                            <textarea class="form-control" id="member-notes" rows="2"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-purple" id="save-member-btn">Save Member</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Member Details Modal -->
+    <div class="modal fade" id="memberDetailsModal" tabindex="-1" aria-labelledby="memberDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title" id="memberDetailsModalLabel"><i class="fas fa-user-circle me-2"></i>Member Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="member-profile-pic text-center">
+                                <i class="fas fa-user-circle fa-8x text-muted"></i>
+                                <h5 class="mt-3 member-name">Member Name</h5>
+                                <p class="member-id text-muted">MEM123456</p>
+                                <div class="member-status mt-2"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <h5 class="border-bottom pb-2"><i class="fas fa-info-circle me-2"></i>Basic Information</h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <p class="mb-1 text-muted">Email Address</p>
+                                    <p class="mb-0 member-email">email@example.com</p>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <p class="mb-1 text-muted">Phone Number</p>
+                                    <p class="mb-0 member-phone">123-456-7890</p>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <p class="mb-1 text-muted">Age</p>
+                                    <p class="mb-0 member-age">30</p>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <p class="mb-1 text-muted">Gender</p>
+                                    <p class="mb-0 member-gender">Male</p>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <p class="mb-1 text-muted">Date Joined</p>
+                                    <p class="mb-0 member-joined">2023-06-15</p>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <p class="mb-1 text-muted">Attendance Rate</p>
+                                    <p class="mb-0 member-attendance-rate">75%</p>
+                                </div>
+                            </div>
+
+                            <h5 class="border-bottom pb-2 mt-4"><i class="fas fa-heartbeat me-2"></i>Health Metrics</h5>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <p class="mb-1 text-muted">Height</p>
+                                    <p class="mb-0 member-height">175 cm</p>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <p class="mb-1 text-muted">Weight</p>
+                                    <p class="mb-0 member-weight">70 kg</p>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <p class="mb-1 text-muted">BMI</p>
+                                    <p class="mb-0 member-bmi">22.9 (Normal)</p>
+                                </div>
+                            </div>
+
+                            <h5 class="border-bottom pb-2 mt-4"><i class="fas fa-clipboard-list me-2"></i>Assigned Plans</h5>
+                            <div id="member-plans" class="mt-3">
+                                <div class="member-fitness-plans mb-2"></div>
+                                <div class="member-nutrition-plans"></div>
+                            </div>
+
+                            <h5 class="border-bottom pb-2 mt-4"><i class="fas fa-sticky-note me-2"></i>Notes</h5>
+                            <p class="member-notes mt-2">No additional notes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary edit-member-btn">Edit Member</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-dumbbell me-2"></i>FitTrack Pro</h5>
+                    <p>Comprehensive gym management system for tracking members, schedules, and fitness progress.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="dashboard.html" class="text-white">Dashboard</a></li>
+                        <li><a href="members.html" class="text-white">Members</a></li>
+                        <li><a href="bmi-calculator.html" class="text-white">BMI Calculator</a></li>
+                        <li><a href="fitness-plans.html" class="text-white">Fitness Plans</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope me-2"></i>info@fittrackpro.com</li>
+                        <li><i class="fas fa-phone me-2"></i>(123) 456-7890</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2023 FitTrack Pro. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/datatables.net@1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/datatables.net-bs5@1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize member stats
+            updateMemberStats();
+            
+            // Initialize member list
+            renderMemberList();
+            
+            // Member search functionality
+            document.getElementById('member-search').addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                filterMembers(searchTerm);
+            });
+            
+            // Save member button event
+            document.getElementById('save-member-btn').addEventListener('click', function() {
+                document.getElementById('member-form').dispatchEvent(new Event('submit'));
+                $('#addMemberModal').modal('hide');
+            });
+            
+            // Calculate BMI when height and weight are entered
+            const heightInput = document.getElementById('member-height');
+            const weightInput = document.getElementById('member-weight');
+            
+            function calculateBMIFromInputs() {
+                if (heightInput.value && weightInput.value) {
+                    const height = parseFloat(heightInput.value) / 100; // convert to meters
+                    const weight = parseFloat(weightInput.value);
+                    const bmi = weight / (height * height);
+                    
+                    if (!isNaN(bmi)) {
+                        const bmiElement = document.createElement('div');
+                        bmiElement.classList.add('alert', 'alert-info', 'mt-2');
+                        bmiElement.innerHTML = `<strong>Calculated BMI:</strong> ${bmi.toFixed(1)} (${getBmiCategory(bmi)})`;
+                        
+                        // Remove any existing BMI alert
+                        const existingAlert = weightInput.parentElement.parentElement.querySelector('.alert');
+                        if (existingAlert) {
+                            existingAlert.remove();
+                        }
+                        
+                        weightInput.parentElement.parentElement.appendChild(bmiElement);
+                    }
+                }
+            }
+            
+            heightInput.addEventListener('input', calculateBMIFromInputs);
+            weightInput.addEventListener('input', calculateBMIFromInputs);
+        });
+        
+        // Update member statistics
+        function updateMemberStats() {
+            // Total members
+            document.getElementById('stats-total-members').textContent = members.length;
+            
+            // Active members
+            const activeMembers = members.filter(m => m.membershipStatus === 'y');
+            document.getElementById('stats-active-members').textContent = activeMembers.length;
+            
+            // Today's attendance
+            const today = new Date().toISOString().split('T')[0];
+            const todaysAttendance = attendance[today] ? attendance[today].length : 0;
+            document.getElementById('stats-attendance-today').textContent = todaysAttendance;
+            
+            // Average BMI
+            const membersWithBmi = members.filter(m => m.bmi);
+            const avgBmi = membersWithBmi.length > 0 ? 
+                membersWithBmi.reduce((sum, m) => sum + m.bmi, 0) / membersWithBmi.length : 0;
+            document.getElementById('stats-avg-bmi').textContent = avgBmi.toFixed(1);
+        }
+        
+        // Filter members by search term
+        function filterMembers(searchTerm) {
+            const rows = document.querySelectorAll('#member-list tr');
+            
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html> 

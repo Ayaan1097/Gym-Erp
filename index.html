@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack Pro - Gym Management System</title>
+    <meta name="description"
+        content="Comprehensive gym management system for tracking members, schedules, and fitness progress">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+
+<body class="landing-page">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-dumbbell me-2"></i>FitTrack Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="members.html">Members</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bmi-calculator.html">BMI Calculator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fitness-plans.html">Fitness Plans</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nutrition.html">Nutrition</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="landing-hero">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <h1 class="display-3 fw-bold text-white">Transform Your Gym Management</h1>
+                    <p class="lead text-white">Elevate your fitness business with our all-in-one solution for member
+                        tracking, fitness planning, and performance analytics.</p>
+                    <div class="mt-5">
+                        <a href="dashboard.html" class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                        </a>
+                        <a href="members.html" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-users me-2"></i>Manage Members
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features py-5">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Powerful Features</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="icon-wrapper bg-primary">
+                            <i class="fas fa-users text-white"></i>
+                        </div>
+                        <h3>Member Management</h3>
+                        <p>Track member information, attendance, and membership status. Organize and access member data
+                            with ease.</p>
+                        <a href="members.html" class="btn btn-sm btn-primary mt-3">Explore</a>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="icon-wrapper bg-success">
+                            <i class="fas fa-calculator text-white"></i>
+                        </div>
+                        <h3>BMI Calculator</h3>
+                        <p>Calculate and monitor BMI for members. Provide personalized fitness recommendations based on
+                            health metrics.</p>
+                        <a href="bmi-calculator.html" class="btn btn-sm btn-success mt-3">Explore</a>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card">
+                        <div class="icon-wrapper bg-danger">
+                            <i class="fas fa-heartbeat text-white"></i>
+                        </div>
+                        <h3>Fitness Plans</h3>
+                        <p>Create customized fitness plans based on member BMI. Tailor workouts to individual needs and
+                            goals.</p>
+                        <a href="fitness-plans.html" class="btn btn-sm btn-danger mt-3">Explore</a>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-card">
+                        <div class="icon-wrapper bg-info">
+                            <i class="fas fa-apple-alt text-white"></i>
+                        </div>
+                        <h3>Nutrition Plans</h3>
+                        <p>Assign personalized nutrition plans aligned with fitness goals. Help members achieve better
+                            results through diet management.</p>
+                        <a href="nutrition.html" class="btn btn-sm btn-info mt-3">Explore</a>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-card">
+                        <div class="icon-wrapper bg-warning">
+                            <i class="fas fa-calendar-check text-white"></i>
+                        </div>
+                        <h3>Attendance Tracking</h3>
+                        <p>Monitor daily attendance with simple check-in system. Generate attendance reports and
+                            identify patterns.</p>
+                        <a href="members.html" class="btn btn-sm btn-warning mt-3">Explore</a>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-card">
+                        <div class="icon-wrapper bg-purple">
+                            <i class="fas fa-chart-line text-white"></i>
+                        </div>
+                        <h3>Performance Analytics</h3>
+                        <p>Track fitness progress and get valuable insights. Make data-driven decisions to improve your
+                            gym's operations.</p>
+                        <a href="dashboard.html" class="btn btn-sm btn-purple mt-3">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">What Gym Owners Say</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <div class="avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User Avatar">
+                        </div>
+                        <div class="content">
+                            <p class="quote">"FitTrack Pro revolutionized how we manage our gym. The BMI calculator and
+                                fitness plan features have made it so much easier to provide personalized services."</p>
+                            <p class="name">- John Davis, Fitness First</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card">
+                        <div class="avatar">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Avatar">
+                        </div>
+                        <div class="content">
+                            <p class="quote">"The nutrition plans feature has been a game-changer for our members. We've
+                                seen incredible results by combining tailored workouts with personalized diet plans."
+                            </p>
+                            <p class="name">- Sarah Johnson, Elite Fitness</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-card">
+                        <div class="avatar">
+                            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="User Avatar">
+                        </div>
+                        <div class="content">
+                            <p class="quote">"Attendance tracking made simple! Managing memberships and tracking
+                                attendance used to be a headache, but now it's all seamless with FitTrack Pro."</p>
+                            <p class="name">- Mike Roberts, PowerHouse Gym</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta py-5">
+        <div class="container text-center" data-aos="zoom-in">
+            <h2 class="text-white mb-4">Ready to transform your gym management?</h2>
+            <p class="text-white mb-4">Get started with FitTrack Pro today and take your fitness business to the next
+                level.</p>
+            <a href="dashboard.html" class="btn btn-light btn-lg">Start Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-dumbbell me-2"></i>FitTrack Pro</h5>
+                    <p>Comprehensive gym management system for tracking members, schedules, and fitness progress.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="dashboard.html" class="text-white">Dashboard</a></li>
+                        <li><a href="members.html" class="text-white">Members</a></li>
+                        <li><a href="bmi-calculator.html" class="text-white">BMI Calculator</a></li>
+                        <li><a href="fitness-plans.html" class="text-white">Fitness Plans</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope me-2"></i>info@fittrackpro.com</li>
+                        <li><i class="fas fa-phone me-2"></i>(123) 456-7890</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2023 FitTrack Pro. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS animation library
+        AOS.init();
+    </script>
+</body>
+
+</html>

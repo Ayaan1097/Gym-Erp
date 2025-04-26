@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Plans | FitTrack Pro</title>
+    <meta name="description" content="Personalized fitness plans based on BMI and fitness goals">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="fitness-plans-page">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-dumbbell me-2"></i>FitTrack Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">
+                            <i class="fas fa-tachometer-alt me-1"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="members.html">
+                            <i class="fas fa-users me-1"></i> Members
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bmi-calculator.html">
+                            <i class="fas fa-calculator me-1"></i> BMI Calculator
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="fitness-plans.html">
+                            <i class="fas fa-heartbeat me-1"></i> Fitness Plans
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nutrition.html">
+                            <i class="fas fa-apple-alt me-1"></i> Nutrition
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Fitness Plans Header -->
+    <header class="fitness-header bg-gradient-danger text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1><i class="fas fa-heartbeat me-2"></i>Fitness Plans</h1>
+                    <p class="lead">Customized workout plans based on body metrics and fitness goals.</p>
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <a href="bmi-calculator.html" class="btn btn-light me-2">
+                        <i class="fas fa-calculator me-2"></i>Calculate BMI
+                    </a>
+                    <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#assignPlanModal">
+                        <i class="fas fa-user-plus me-2"></i>Assign Plan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+        <!-- Fitness Plan Selection -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-body p-0">
+                        <nav>
+                            <div class="nav nav-tabs nav-fill" id="plan-tabs" role="tablist">
+                                <button class="nav-link active" id="weight-loss-tab" data-bs-toggle="tab" data-bs-target="#weight-loss" type="button" role="tab" aria-selected="true">
+                                    <i class="fas fa-weight me-2 text-danger"></i>Weight Loss Plan
+                                </button>
+                                <button class="nav-link" id="maintenance-tab" data-bs-toggle="tab" data-bs-target="#maintenance" type="button" role="tab" aria-selected="false">
+                                    <i class="fas fa-balance-scale me-2 text-success"></i>Maintenance Plan
+                                </button>
+                                <button class="nav-link" id="weight-gain-tab" data-bs-toggle="tab" data-bs-target="#weight-gain" type="button" role="tab" aria-selected="false">
+                                    <i class="fas fa-dumbbell me-2 text-primary"></i>Weight Gain Plan
+                                </button>
+                                <button class="nav-link" id="custom-tab" data-bs-toggle="tab" data-bs-target="#custom" type="button" role="tab" aria-selected="false">
+                                    <i class="fas fa-sliders-h me-2 text-warning"></i>Custom Plan
+                                </button>
+                            </div>
+                        </nav>
+                        <div class="tab-content p-4" id="plan-tab-content">
+                            <!-- Weight Loss Plan Tab -->
+                            <div class="tab-pane fade show active" id="weight-loss" role="tabpanel">
+                                <div class="plan-header d-flex align-items-center mb-4">
+                                    <div class="plan-icon bg-danger text-white me-3">
+                                        <i class="fas fa-weight"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="mb-0">Weight Loss Plan</h3>
+                                        <p class="mb-0 text-muted">Ideal for BMI over 25</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="plan-description mb-4">
+                                            <p>Our weight loss plan focuses on creating a caloric deficit through a combination of cardio exercises, strength training, and flexibility work. The program is designed to maximize fat loss while preserving muscle mass.</p>
+                                        </div>
+                                        
+                                        <h5><i class="fas fa-calendar-alt me-2 text-danger"></i>Weekly Workout Schedule</h5>
+                                        <div class="table-responsive mb-4">
+                                            <table class="table table-bordered">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th>Day</th>
+                                                        <th>Morning</th>
+                                                        <th>Evening</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Monday</td>
+                                                        <td>Cardio: 30 min jogging/walking</td>
+                                                        <td>Upper Body Strength: 30 min</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Tuesday</td>
+                                                        <td>HIIT: 20 min interval training</td>
+                                                        <td>Rest</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Wednesday</td>
+                                                        <td>Rest</td>
+                                                        <td>Lower Body Strength: 30 min</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Thursday</td>
+                                                        <td>Cardio: 45 min cycling/elliptical</td>
+                                                        <td>Core Workout: 20 min</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Friday</td>
+                                                        <td>Full Body Circuit: 40 min</td>
+                                                        <td>Rest</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Saturday</td>
+                                                        <td>Active Recovery: 30 min walking</td>
+                                                        <td>Flexibility & Stretching: 20 min</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Sunday</td>
+                                                        <td colspan="2" class="text-center">Rest Day</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        
+                                        <h5><i class="fas fa-bolt me-2 text-danger"></i>Key Focus Areas</h5>
+                                        <ul class="plan-features mb-4">
+                                            <li>Caloric deficit of 500-750 calories per day</li>
+                                            <li>Combination of cardio and strength training</li>
+                                            <li>Progressive increase in intensity as fitness improves</li>
+                                            <li>Regular monitoring of weight and measurements</li>
+                                            <li>Complementary nutrition plan focused on protein-rich, lower-carb options</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="col-lg-4">
+                                        <div class="card border-danger mb-4">
+                                            <div class="card-header bg-danger text-white">
+                                                <h5 class="mb-0"><i class="fas fa-chart-line me-2"></i>Expected Results</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <ul class="list-unstyled">
+                                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>0.5-1 kg weight loss per week</li>
+                                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Improved cardiovascular health</li>
+                                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Increased energy levels</li>
+                                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Better sleep quality</li>
+                                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Reduced BMI over time</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="card border-info">
+                                            <div class="card-header bg-info text-white">
+                                                <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Additional Resources</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="d-grid gap-2">
+                                                    <a href="#" class="btn btn-outline-primary btn-sm">
+                                                        <i class="fas fa-video me-2"></i>Video Tutorials
+                                                    </a>
+                                                    <a href="#" class="btn btn-outline-primary btn-sm">
+                                                        <i class="fas fa-file-pdf me-2"></i>Workout Sheets
+                                                    </a>
+                                                    <a href="nutrition.html" class="btn btn-outline-primary btn-sm">
+                                                        <i class="fas fa-apple-alt me-2"></i>Nutrition Plan
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Maintenance Plan Tab -->
+                            <div class="tab-pane fade" id="maintenance" role="tabpanel">
+                                <div class="plan-header d-flex align-items-center mb-4">
+                                    <div class="plan-icon bg-success text-white me-3">
+                                        <i class="fas fa-balance-scale"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="mb-0">Maintenance Plan</h3>
+                                        <p class="mb-0 text-muted">Ideal for BMI between 18.5-24.9</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="alert alert-success">
+                                    <i class="fas fa-info-circle me-2"></i>This plan is designed to maintain current weight while improving overall fitness, strength, and endurance.
+                                </div>
+                                
+                                <!-- Plan content would go here, similar structure to weight loss plan -->
+                                <p>Plan details will be displayed when selected. The maintenance plan focuses on balanced workouts to maintain current weight while improving overall fitness.</p>
+                            </div>
+                            
+                            <!-- Weight Gain Plan Tab -->
+                            <div class="tab-pane fade" id="weight-gain" role="tabpanel">
+                                <div class="plan-header d-flex align-items-center mb-4">
+                                    <div class="plan-icon bg-primary text-white me-3">
+                                        <i class="fas fa-dumbbell"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="mb-0">Weight Gain Plan</h3>
+                                        <p class="mb-0 text-muted">Ideal for BMI below 18.5</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="alert alert-primary">
+                                    <i class="fas fa-info-circle me-2"></i>This plan focuses on building muscle mass through progressive resistance training and a caloric surplus.
+                                </div>
+                                
+                                <!-- Plan content would go here, similar structure to weight loss plan -->
+                                <p>Plan details will be displayed when selected. The weight gain plan emphasizes strength training and proper nutrition to support healthy weight gain.</p>
+                            </div>
+                            
+                            <!-- Custom Plan Tab -->
+                            <div class="tab-pane fade" id="custom" role="tabpanel">
+                                <div class="plan-header d-flex align-items-center mb-4">
+                                    <div class="plan-icon bg-warning text-white me-3">
+                                        <i class="fas fa-sliders-h"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="mb-0">Custom Fitness Plan</h3>
+                                        <p class="mb-0 text-muted">Tailored to specific goals and needs</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <i class="fas fa-info-circle me-2"></i>Create a customized plan based on specific fitness goals, physical condition, and preferences.
+                                </div>
+                                
+                                <!-- Custom plan builder form would go here -->
+                                <p>Custom plan builder will be available here. You can create personalized workout routines based on specific goals and preferences.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Assigned Plans Section -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="mb-4"><i class="fas fa-clipboard-list me-2 text-primary"></i>Assigned Fitness Plans</h2>
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="assigned-plans-table">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Member</th>
+                                        <th>Plan Type</th>
+                                        <th>Duration</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="assigned-plans-list">
+                                    <!-- Sample assigned plan data, would be dynamic in real application -->
+                                    <tr>
+                                        <td>FP123456</td>
+                                        <td>John Doe</td>
+                                        <td><span class="badge bg-success">Maintenance</span></td>
+                                        <td>4 weeks</td>
+                                        <td>2023-05-01</td>
+                                        <td>2023-05-28</td>
+                                        <td><span class="badge bg-primary">Active</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info view-plan-btn">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-warning edit-plan-btn">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>FP234567</td>
+                                        <td>Jane Smith</td>
+                                        <td><span class="badge bg-danger">Weight Loss</span></td>
+                                        <td>8 weeks</td>
+                                        <td>2023-04-15</td>
+                                        <td>2023-06-10</td>
+                                        <td><span class="badge bg-primary">Active</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info view-plan-btn">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-warning edit-plan-btn">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Assign Plan Modal -->
+    <div class="modal fade" id="assignPlanModal" tabindex="-1" aria-labelledby="assignPlanModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="assignPlanModalLabel"><i class="fas fa-clipboard-list me-2"></i>Assign Fitness Plan</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="assign-plan-form">
+                        <div class="mb-3">
+                            <label for="plan-member-select" class="form-label">Select Member</label>
+                            <select class="form-select" id="plan-member-select" required>
+                                <option value="">Choose a member...</option>
+                                <option value="1">John Doe (BMI: 22.5)</option>
+                                <option value="2">Jane Smith (BMI: 26.8)</option>
+                                <option value="3">Mike Brown (BMI: 18.2)</option>
+                                <!-- More options would be populated dynamically -->
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="plan-type" class="form-label">Plan Type</label>
+                            <select class="form-select" id="plan-type" required>
+                                <option value="">Choose a plan type...</option>
+                                <option value="weight-loss">Weight Loss Plan</option>
+                                <option value="maintenance">Maintenance Plan</option>
+                                <option value="weight-gain">Weight Gain Plan</option>
+                                <option value="custom">Custom Plan</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="plan-duration" class="form-label">Plan Duration (weeks)</label>
+                            <input type="number" class="form-control" id="plan-duration" min="1" max="52" value="4" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="plan-start-date" class="form-label">Start Date</label>
+                            <input type="date" class="form-control" id="plan-start-date" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="plan-notes" class="form-label">Additional Notes</label>
+                            <textarea class="form-control" id="plan-notes" rows="3"></textarea>
+                        </div>
+                        <input type="hidden" id="selected-plan">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="save-plan-btn">Assign Plan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-dumbbell me-2"></i>FitTrack Pro</h5>
+                    <p>Comprehensive gym management system for tracking members, schedules, and fitness progress.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="dashboard.html" class="text-white">Dashboard</a></li>
+                        <li><a href="members.html" class="text-white">Members</a></li>
+                        <li><a href="bmi-calculator.html" class="text-white">BMI Calculator</a></li>
+                        <li><a href="fitness-plans.html" class="text-white">Fitness Plans</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope me-2"></i>info@fittrackpro.com</li>
+                        <li><i class="fas fa-phone me-2"></i>(123) 456-7890</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2023 FitTrack Pro. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default date for plan start date
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('plan-start-date').value = today;
+            
+            // Save plan button event
+            document.getElementById('save-plan-btn').addEventListener('click', function() {
+                // Validation would go here
+                alert('Fitness plan assigned successfully!');
+                $('#assignPlanModal').modal('hide');
+            });
+            
+            // View plan buttons
+            const viewPlanBtns = document.querySelectorAll('.view-plan-btn');
+            viewPlanBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    alert('Plan details would be shown here in a real application.');
+                });
+            });
+            
+            // Edit plan buttons
+            const editPlanBtns = document.querySelectorAll('.edit-plan-btn');
+            editPlanBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    alert('Plan editing form would be shown here in a real application.');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

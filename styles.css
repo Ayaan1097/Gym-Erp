@@ -1,0 +1,609 @@
+/* General Styles */
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #0dcaf0;
+    --dark-color: #212529;
+    --light-color: #f8f9fa;
+    --purple-color: #6f42c1;
+    --pink-color: #d63384;
+    --orange-color: #fd7e14;
+    --teal-color: #20c997;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    background: linear-gradient(rgba(0, 123, 255, 0.1), rgba(0, 123, 255, 0.05));
+    padding: 80px 0;
+}
+
+.hero h1 {
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+/* Cards Styling */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    border-radius: 10px 10px 0 0 !important;
+    font-weight: bold;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    text-align: center;
+    padding: 15px;
+}
+
+.dashboard-card .card-body i {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.dashboard-card .card-title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Section Styles */
+section {
+    padding: 60px 0;
+}
+
+section h2 {
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    position: relative;
+}
+
+section h2:after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 15px auto 0;
+}
+
+/* Form Styling */
+.form-control, .form-select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.form-control:focus, .form-select:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    border-color: var(--primary-color);
+}
+
+/* Table Styling */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    vertical-align: middle;
+}
+
+.table th {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 123, 255, 0.05);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+/* BMI Calculator */
+#bmi-result {
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.progress {
+    height: 25px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    font-weight: 600;
+    transition: width 0.6s ease;
+}
+
+/* Fitness and Nutrition Plan Cards */
+.fitness-plan-card, .nutrition-plan-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.plan-features {
+    margin-bottom: 20px;
+}
+
+.plan-features li {
+    margin-bottom: 10px;
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.assign-plan-btn, .assign-diet-btn {
+    margin-top: auto;
+}
+
+/* Modal Styling */
+.modal-content {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 15px 20px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 50px 0 20px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: var(--warning-color);
+    text-decoration: none;
+}
+
+footer h5 {
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+footer hr {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero {
+        padding: 40px 0;
+        text-align: center;
+    }
+    
+    .hero img {
+        margin-top: 30px;
+    }
+    
+    section {
+        padding: 40px 0;
+    }
+    
+    .dashboard-card {
+        margin-bottom: 15px;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fadeIn {
+    animation: fadeIn 1s;
+}
+
+/* BMI color indicators */
+.bmi-underweight {
+    background-color: #17a2b8;
+}
+
+.bmi-normal {
+    background-color: #28a745;
+}
+
+.bmi-overweight {
+    background-color: #ffc107;
+}
+
+.bmi-obese {
+    background-color: #dc3545;
+}
+
+/* Landing Page Styles */
+.landing-page {
+    background-color: #f8f9fa;
+}
+
+.landing-hero {
+    background: url('https://source.unsplash.com/random/1920x1080/?gym') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.landing-hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(13, 110, 253, 0.9) 0%, rgba(111, 66, 193, 0.9) 100%);
+    opacity: 0.85;
+    z-index: 1;
+}
+
+.landing-hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.landing-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.landing-hero p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+.navbar {
+    background-color: transparent !important;
+    transition: all 0.3s ease;
+    padding: 1rem 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar.scrolled {
+    background-color: var(--dark-color) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.icon-wrapper {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.icon-wrapper i {
+    font-size: 28px;
+}
+
+.testimonial-card {
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+}
+
+.testimonial-card .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: -40px auto 20px;
+    border: 5px solid white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.testimonial-card .content {
+    padding: 0 20px 20px;
+    text-align: center;
+}
+
+.testimonial-card .quote {
+    font-style: italic;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.testimonial-card .name {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.testimonial-card .rating {
+    color: #ffc107;
+}
+
+.cta {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--purple-color) 100%);
+}
+
+/* Dashboard Page Styles */
+.dashboard-page .navbar {
+    position: static;
+    background-color: var(--dark-color) !important;
+}
+
+.dashboard-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #0056b3 100%);
+    color: white;
+    padding: 30px 0;
+}
+
+.current-date {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.metrics {
+    margin-top: -30px;
+}
+
+.dashboard-card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-icon {
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.activity-feed .activity-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quick-actions .btn {
+    text-align: left;
+    position: relative;
+    padding-left: 25px;
+}
+
+.quick-actions .btn i {
+    margin-right: 10px;
+}
+
+/* Members Page Styles */
+.members-page .navbar {
+    position: static;
+    background-color: var(--dark-color) !important;
+}
+
+.members-header {
+    background: linear-gradient(135deg, var(--purple-color) 0%, #4b276d 100%);
+    padding: 30px 0;
+}
+
+.bg-gradient-purple {
+    background: linear-gradient(135deg, var(--purple-color) 0%, #4b276d 100%);
+}
+
+.bg-purple {
+    background-color: var(--purple-color);
+}
+
+.btn-purple {
+    background-color: var(--purple-color);
+    color: white;
+}
+
+.btn-purple:hover {
+    background-color: #5a3799;
+    color: white;
+}
+
+.member-profile-pic i {
+    color: #dee2e6;
+}
+
+.member-status .badge {
+    margin-right: 5px;
+}
+
+/* BMI Calculator Page Styles */
+.bmi-calculator-page .navbar {
+    position: static;
+    background-color: var(--dark-color) !important;
+}
+
+.bmi-header {
+    padding: 30px 0;
+    background: linear-gradient(135deg, var(--info-color) 0%, #0e8da2 100%);
+}
+
+.bg-gradient-info {
+    background: linear-gradient(135deg, var(--info-color) 0%, #0e8da2 100%);
+}
+
+.bmi-scale {
+    height: 20px;
+    background: linear-gradient(to right, 
+        var(--info-color) 0%, 
+        var(--info-color) 25%, 
+        var(--success-color) 25%, 
+        var(--success-color) 50%, 
+        var(--warning-color) 50%, 
+        var(--warning-color) 75%, 
+        var(--danger-color) 75%, 
+        var(--danger-color) 100%
+    );
+    border-radius: 10px;
+    margin: 30px 0;
+}
+
+.bmi-scale-bar {
+    height: 20px;
+    border-radius: 10px;
+    background: linear-gradient(to right, 
+        var(--info-color) 0%, 
+        var(--info-color) 25%, 
+        var(--success-color) 25%, 
+        var(--success-color) 50%, 
+        var(--warning-color) 50%, 
+        var(--warning-color) 75%, 
+        var(--danger-color) 75%, 
+        var(--danger-color) 100%
+    );
+}
+
+.bmi-categories {
+    position: relative;
+    width: 100%;
+    height: 30px;
+}
+
+.bmi-category {
+    position: absolute;
+    transform: translateX(-50%);
+    top: 5px;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.bmi-marker {
+    width: 12px;
+    height: 30px;
+    top: -5px;
+    border-radius: 3px;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.bmi-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    border: 5px solid var(--success-color);
+}
+
+.bmi-circle #bmi-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.bmi-value-container h4 {
+    font-weight: 600;
+}
+
+.bmi-category-circle {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto;
+    color: white;
+}
+
+.bmi-category-circle i {
+    font-size: 24px;
+}
+
+.bmi-info-card {
+    transition: transform 0.3s ease;
+}
+
+.bmi-info-card:hover {
+    transform: translateY(-10px);
+}
